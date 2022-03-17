@@ -2,16 +2,17 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { NestExpressApplication } from '@nestjs/platform-express';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
+import { join } from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const config = app.get(ConfigService);
 
-  app.setGlobalPrefix('api/v1', {
-    exclude: ['version', 'api-docs', 'health-check'],
-  });
+  app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app.setViewEngine('hbs');
 
   app.use(cookieParser());
   app.enableCors(config.get('cors'));

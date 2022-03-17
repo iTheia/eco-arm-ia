@@ -3,6 +3,6 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-export default registerAs('vision', () => ({
-  url: process.env.DB_URL || 'mongodb://localhost/eco-arm-ia',
+export default registerAs('database', () => ({
+  uri: process.env.DB_URL || 'mongodb://localhost/eco-arm-ia',
 }));

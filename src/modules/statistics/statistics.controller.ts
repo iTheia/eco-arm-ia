@@ -1,7 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Render } from '@nestjs/common';
 import { StatisticsService } from './statistics.service';
 
-@Controller('statistics')
+@Controller('')
 export class StatisticsController {
   constructor(private readonly statisticsService: StatisticsService) {}
+  @Get()
+  @Render('index')
+  root() {
+    return { message: 'Hello world!' };
+  }
 }
