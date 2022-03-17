@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const { env } = process;
-
+// esta es configuracion por si se llega a subir a internet y no tener problemos
 export default registerAs(
   'cors',
   (): CorsOptions => ({

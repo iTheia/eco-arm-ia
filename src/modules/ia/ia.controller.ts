@@ -1,13 +1,12 @@
-import { Controller, Get, Res } from '@nestjs/common';
-import { Response } from 'express';
+import { Controller, Get, Param } from '@nestjs/common';
 import { IaService } from './ia.service';
 
 @Controller('ia')
 export class IaController {
   constructor(private readonly iaService: IaService) {}
 
-  @Get()
-  async detect(@Res() res: Response) {
-    return this.iaService.detect(res);
+  @Get('detect/:name')
+  async detect(@Param('name') name: string) {
+    return this.iaService.detect(name);
   }
 }
