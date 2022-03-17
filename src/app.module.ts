@@ -5,6 +5,8 @@ import config from './config';
 import { IaModule } from './modules/ia/ia.module';
 import { CamaraModule } from './modules/camara/camara.module';
 import { MathModule } from './modules/math/math.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { StatisticsModule } from './modules/statistics/statistics.module';
 
 @Module({
   imports: [
@@ -19,9 +21,16 @@ import { MathModule } from './modules/math/math.module';
       useFactory: (config: ConfigService) => config.get('static'),
       inject: [ConfigService],
     }),
+    // conexion a base de datos
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (config: ConfigService) => config.get('database'),
+      inject: [ConfigService],
+    }),
     IaModule,
     CamaraModule,
     MathModule,
+    StatisticsModule,
   ],
 })
 export class AppModule {}
