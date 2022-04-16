@@ -8,20 +8,25 @@ export class MathService {
   // retorna la informacion necesaria para el brazo
   // centro y angulo de la pinza
   getDataForArm(battery: any) {
-    // const { bottomVertex, topVertex } = this.getVertex(battery);
-    // const bottomMidle = this.getMiddle(bottomVertex[0], bottomVertex[1]);
-    // const topMidle = this.getMiddle(topVertex[0], topVertex[1]);
-    // const middle = this.getMiddle(topMidle, bottomMidle);
-    const angles = this.arm.getAngles({ x: -6.5, y: 13.5 });
+    const { bottomVertex, topVertex } = this.getVertex(battery);
+    const bottomMidle = this.getMiddle(bottomVertex[0], bottomVertex[1]);
+    const topMidle = this.getMiddle(topVertex[0], topVertex[1]);
+    const middle = this.getMiddle(topMidle, bottomMidle);
+    const angles = this.arm.getAngles(middle);
     if (!angles) {
       return '';
     }
     const { atlas, base, codo } = angles;
-    return { base, atlas, codo };
     return `${base},${atlas},${codo}`;
-    return {};
   }
-
+  getDataForArmMock(cords: ICord) {
+    const angles = this.arm.getAngles(cords);
+    if (!angles) {
+      return 'valores invalidos';
+    }
+    const { atlas, base, codo } = angles;
+    return `${base},${atlas},${codo}`;
+  }
   // regresa el centro dado dos puntos
   getMiddle(start: ICord, end: ICord) {
     return { x: (start.x + end.x) / 2, y: (start.y + end.y) / 2 };

@@ -4,6 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import * as fs from 'fs';
 import { batteries } from '@const/data';
 import { MathService } from '@modules/math/math.service';
+import { ICord } from './types';
 
 @Injectable()
 export class IaService {
@@ -17,7 +18,6 @@ export class IaService {
   }
 
   async detect(name: string) {
-    return this.mathService.getDataForArm({});
     let [detection] = await this.client.logoDetection(
       `./static/images/${name}`,
     );
@@ -30,5 +30,8 @@ export class IaService {
       cords.push(this.mathService.getDataForArm(battery));
     });
     return cords;
+  }
+  async detectTest(cords: ICord) {
+    return this.mathService.getDataForArmMock(cords);
   }
 }

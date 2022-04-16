@@ -30,7 +30,7 @@ export class Arm {
     const b = this.baseCords.y - point.y;
     const hypot = Math.sqrt(a * a + b * b);
 
-    console.log(hypot);
+    console.log('hypot', hypot);
     const objectiveCords = {
       x: hypot,
       y: 0,
@@ -48,7 +48,7 @@ export class Arm {
       intersectionPoint,
       this.atlasCords,
     );
-    console.log(base, atlas, codo);
+    console.log('base, atlas, codo', base, atlas, codo);
     console.log({
       base: this.convertAngle(base),
       atlas: this.convertAngle(atlas),
