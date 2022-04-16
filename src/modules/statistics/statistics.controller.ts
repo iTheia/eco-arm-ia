@@ -7,6 +7,6 @@ export class StatisticsController {
   @Get()
   @Render('index')
   root() {
-    return { message: 'Hello world!' };
+    return { test: [{ message: 'Hello world!' }] };
   }
 }

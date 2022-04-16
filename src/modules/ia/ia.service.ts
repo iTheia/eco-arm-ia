@@ -17,6 +17,7 @@ export class IaService {
   }
 
   async detect(name: string) {
+    return this.mathService.getDataForArm({});
     let [detection] = await this.client.logoDetection(
       `./static/images/${name}`,
     );
