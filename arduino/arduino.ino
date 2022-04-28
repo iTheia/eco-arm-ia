@@ -13,15 +13,12 @@ int servo_angles_rest[] = {0, 0, 0, 0, 0};
 int servo_angles_trash[] = {0, 0, 0, 0, 0};
 
 void setup() {
-  //  servos.begin();
-  //  servos.setPWMFreq(60);                 //Frecuencia PWM para servo MG995 de entre 50-60 Hz
+   servos.begin();
+   servos.setPWMFreq(60);                 //Frecuencia PWM para servo MG995 de entre 50-60 Hz
 }
 
 void setServo(uint8_t n_servo, int angulo) {
   servos.setPWM(n_servo, 0, map(angulo, 0, 180, pos0, pos180));
-}
-int setAngles() {
-  // esto lo matebrutico
 }
 
 void smothMovment(int current_array[], int destiny_array[]) {

@@ -1,5 +1,5 @@
 import { ICord } from '@modules/ia/types';
-import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Arm } from './arm';
 
 @Injectable()

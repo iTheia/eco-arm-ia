@@ -15,7 +15,7 @@ export class Arm {
   };
   private atlasCords: ICord;
   private range: number = 180;
-  private valueRange: number = 500;
+  private valueRange: number = 460;
   private height: number = 0;
   constructor() {
     this.atlasCords = {
@@ -64,9 +64,7 @@ export class Arm {
     return this.range - angle;
   }
   private convertAngle(angle: number) {
-    // let ratio = (angle * this.valueRange) / this.range;
-
-    let ratio = (angle * 230) / 90;
+    let ratio = (angle * this.valueRange) / this.range;
     return (ratio - 100).toFixed(2);
   }
   private caltAngle(point: ICord, origin: ICord) {
