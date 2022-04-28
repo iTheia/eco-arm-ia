@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pepeniar",
+  "private_key_id": "ea51391907479ee1e6525a03ad9d0f92224aefd9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQDHA6m/Lx4RNQel\nD08BQiAvRG3xn355r/WLgusWBdN80Wfmr1zvsmFMm1UWhS25iJdjgMkkXgKoT8M6\n5te6q7EIh/WxtkXL+tTUDlBkzIHTuZaGhjbGa2Dz0t2DfLfv+OgbAOgnlUhMCepf\nEV67tiASQsjBjHg6cohsZUbv2Px+1KlnfiObA5aeSXcDO+QPB13lRPe9piRvVhjb\nfDlsYIXa+iDRIqP0NzLzDiBBTcBX9Zcpt0Sl2n3an6KWZ294uam/d7uUVAPBHd+7\nPUzi/0OcGctesK1HeLjIepdmgq4wxBhyfvUnlVqspwnCdctK0xJSsRBd+W9FqAYs\nmIVzdDy5AgMBAAECgf9vpRSVLGN2pjWQARo9hsdzvNwYJtfM9jg/+AqHd6mPqv3t\nk1+Pth/zPGv1rHIOBeFeBH8hXeq9RlCiMLb8swYT1s+cMVYxokqIDmv3qiUrBEEL\nD1PSmc0Y1FoN81+zBO/OhRYuCt/6PoIVcKkqpRUKFc+dieFLN2uf2c6jDfAiIgXy\nqtvI/9qdUCY8R3w6gdqQ24+kELwgqABWrRUv6u9BKfdA/yux0iP4tb1R04c1wo7G\nYCxBvqx9WAIKwJ908U0EF/1IEBoYcSYAVu1fzhFs37hGqQNr4+3dvCiPsdj3CDy8\nmgCqfrz5rfJEuaF4ntvPDvUtLgGkCmgp3xvave0CgYEA9CHGmkzts9DLyId2GUza\ntBn579MM4GAsZl7RH+1j6iZfshxWfdwwJ8TdkLKXnElc3BBV+ILXhNshBBSr6Hnn\n6g/aKzzEhOAvknTXe6BU/xB6SUHSUhoz9xH0JxRkx2kUxGlNvxscYFo8lQ+7/75q\nVfcya5gtbCTxLAiXpM90OMcCgYEA0LBl4nKsz5vUn8s5DtLqkAXO/JtTE7lQru5d\nswm/7AYmcuXQvVZLWSjVni0r7C9nGMHhUmnpUW7NrBRT6iub4cPkK5OpjNtMnaiq\nF7NxQsOIoAL2HDsm7O2PTr9AI06vyl6hSkbSEeP6BXNqCObe5HQMs/xDHcZE9Xl6\n+c91Xn8CgYBwnQ/251uS4dLO6qWwoAIWqBDh7vH2ooZ4pm5DEwdO4GquR2IiZqqT\n/bzS3X8QKcs6/BIcM4blEwvUzRBLichP8QYLgdmJDb0ECv/HWDs8+UXfewxgsROd\nedutFzwxvChHPegOKpxZWeauP/bRzu1QQFoyxZzWUOgrDr+c19FdywKBgHkMOKzX\nE4IAw55EhL4ifUg49kzz04Z3UWOGg/cbyqUfFCJFR4Trjx0SYIY1cWq4PDbSDt58\n7Ib9nHMZ/2qvDOYxeCIGrqwzcAdrE+5XeXTecltOHG9XqEZ5rUxiBtP0Cmd56Fhr\nJ+KUuCt9PJ4ZPGSLI+sqgcu9e7ZfVoOcYFoFAoGBAN2i0bgBmPI4+cU8fY0ZkhuD\nCy0hjOIC/vTe3IOSrtuVn/rPDxxCYRMVqcf9ey+CXFTbG7Gb5rYLZjBCrw179Moh\n20+YaXsZjAmFw9+yF1n175oAxkteXWyL3SqkQIq91asnvvKj+/4+JfXGIIm5+zY9\nsVKpoZCjdPjjd+wkvqOa\n-----END PRIVATE KEY-----\n",
+  "client_email": "pepeniar@pepeniar.iam.gserviceaccount.com",
+  "client_id": "116561397653820154130",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pepeniar%40pepeniar.iam.gserviceaccount.com"
+}
