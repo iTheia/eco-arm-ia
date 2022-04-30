@@ -27,5 +27,6 @@ import { mkdirSync } from 'fs';
   ],
   providers: [CamaraService],
   controllers: [CamaraController],
+  exports: [CamaraService],
 })
 export class CamaraModule {}

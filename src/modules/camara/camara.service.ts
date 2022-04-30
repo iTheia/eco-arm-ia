@@ -1,5 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import * as NodeWebcam from 'node-webcam';
+import { v4 as uuid } from 'uuid';
+import sizeOf from 'image-size';
 
 @Injectable()
 export class CamaraService {
@@ -26,8 +28,15 @@ export class CamaraService {
     });
   }
   // esto es para llamar lo de arriba
-  async takePhoto(name: string) {
+  async takePhoto() {
+    const name = uuid();
     const taked = await this.takePhotoAsync(name);
-    return taked ? name : 'error al tomar la foto';
+    if (taked) {
+      throw new HttpException('error taking the photo', 400);
+    }
+    return name;
+  }
+  async getDimensions(name: string) {
+    return sizeOf(`./static/images/${name}`);
   }
 }

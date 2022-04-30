@@ -36,6 +36,7 @@
     "cookie-parser": "^1.4.6",
     "hbs": "^4.2.0",
     "helmet": "^5.0.2",
+    "image-size": "^1.0.1",
     "mongoose": "^6.2.7",
     "node-webcam": "^0.8.0",
     "reflect-metadata": "^0.1.13",

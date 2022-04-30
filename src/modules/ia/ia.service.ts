@@ -1,11 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import vision, { ImageAnnotatorClient } from '@google-cloud/vision';
 import { ConfigService } from '@nestjs/config';
-import * as fs from 'fs';
 import { batteries } from '@const/data';
 import { MathService } from '@modules/math/math.service';
 import { ICord } from './types';
-
 @Injectable()
 export class IaService {
   private client: ImageAnnotatorClient;
@@ -16,7 +14,6 @@ export class IaService {
       ...this.config.get('vision'),
     });
   }
-
   async detect(name: string) {
     let [detection] = await this.client.logoDetection(
       `./static/images/${name}`,
@@ -25,11 +22,11 @@ export class IaService {
     const foundBatteries = logoAnnotations.filter((el) =>
       batteries.includes(el.description),
     );
-    let cords = [];
+    let response = [];
     foundBatteries.forEach((battery) => {
-      cords.push(this.mathService.getDataForArm(battery));
+      response.push(this.mathService.getDataForArm(battery));
     });
-    return cords;
+    return response[0];
   }
   async detectTest(cords: ICord) {
     return this.mathService.getDataForArmMock(cords);

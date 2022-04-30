@@ -1,39 +1,46 @@
+import { google } from '@google-cloud/vision/build/protos/protos';
 import { ICord } from '@modules/ia/types';
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { Arm } from './arm';
-
 @Injectable()
 export class MathService {
   constructor(@Inject('ARM') private readonly arm: Arm) {}
-  // retorna la informacion necesaria para el brazo
-  // centro y angulo de la pinza
-  getDataForArm(battery: any) {
-    const { bottomVertex, topVertex } = this.getVertex(battery);
-    const bottomMidle = this.getMiddle(bottomVertex[0], bottomVertex[1]);
-    const topMidle = this.getMiddle(topVertex[0], topVertex[1]);
-    const middle = this.getMiddle(topMidle, bottomMidle);
+
+  getDataForArm(battery: google.cloud.vision.v1.IEntityAnnotation) {
+    const middle = this.convertCordsToCm(this.getMiddle(battery));
+    console.log('punto medio', middle);
     const angles = this.arm.getAngles(middle);
     if (!angles) {
-      return '';
+      throw new HttpException('Valores invalidos', 400);
     }
     const { atlas, base, codo } = angles;
     return `${base},${atlas},${codo}`;
   }
-  getDataForArmMock(cords: ICord) {
-    const angles = this.arm.getAngles(cords);
-    if (!angles) {
-      return 'valores invalidos';
-    }
-    const { atlas, base, codo } = angles;
-    return `${base},${atlas},${codo}`;
+  convertCordsToCm(cords: ICord) {
+    const height = 823;
+    const width = 1790;
+    const cmX = 15;
+    const cmY = 7;
+    return {
+      x: (cords.x - width / 2) / (width / cmX / 2),
+      y: (height - cords.y) / (height / cmY),
+    };
   }
   // regresa el centro dado dos puntos
-  getMiddle(start: ICord, end: ICord) {
-    return { x: (start.x + end.x) / 2, y: (start.y + end.y) / 2 };
+  getMiddle(battery: google.cloud.vision.v1.IEntityAnnotation) {
+    const { bottomVertex, topVertex } = this.getVertex(battery);
+    const calcPoint = (start: ICord, end: ICord) => ({
+      x: (start.x + end.x) / 2,
+      y: (start.y + end.y) / 2,
+    });
+    return calcPoint(
+      calcPoint(bottomVertex[0], bottomVertex[1]),
+      calcPoint(topVertex[0], topVertex[1]),
+    );
   }
 
   // calcula los dos puntos superiores e inferiores
-  getVertex(battery: any) {
+  getVertex(battery: google.cloud.vision.v1.IEntityAnnotation) {
     const { vertices } = battery.boundingPoly;
     const arr = [...vertices];
     const max = Math.max(...arr.map((el) => el.y));
@@ -48,6 +55,17 @@ export class MathService {
     const bottomVertex = [
       ...vertices.filter((item) => !topVertex.includes(item)),
     ];
-    return { topVertex, bottomVertex };
+    return { topVertex, bottomVertex } as {
+      topVertex: ICord[];
+      bottomVertex: ICord[];
+    };
+  }
+  getDataForArmMock(cords: ICord) {
+    const angles = this.arm.getAngles(cords);
+    if (!angles) {
+      throw new HttpException('Valores invalidos', 400);
+    }
+    const { atlas, base, codo } = angles;
+    return `${base},${atlas},${codo}`;
   }
 }

@@ -1,12 +1,12 @@
 import {
   Controller,
   Get,
+  Param,
   Post,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { CamaraService } from './camara.service';
-import { v4 as uuid } from 'uuid';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('camara')
@@ -15,7 +15,12 @@ export class CamaraController {
 
   @Get('take-photo')
   async takePhoto() {
-    return await this.camaraService.takePhoto(uuid());
+    return await this.camaraService.takePhoto();
+  }
+
+  @Get('photo-dimensions/:name')
+  async getDimensions(@Param('name') name: string) {
+    return await this.camaraService.getDimensions(name);
   }
 
   @Post('upload')
