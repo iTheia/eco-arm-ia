@@ -8,5 +8,6 @@ import { CamaraModule } from '@modules/camara/camara.module';
   imports: [MathModule, CamaraModule],
   controllers: [IaController],
   providers: [IaService],
+  exports: [IaService],
 })
 export class IaModule {}

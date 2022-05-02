@@ -31,10 +31,10 @@ export class CamaraService {
   async takePhoto() {
     const name = uuid();
     const taked = await this.takePhotoAsync(name);
-    if (taked) {
+    if (!taked) {
       throw new HttpException('error taking the photo', 400);
     }
-    return name;
+    return name + '.jpg';
   }
   async getDimensions(name: string) {
     return sizeOf(`./static/images/${name}`);

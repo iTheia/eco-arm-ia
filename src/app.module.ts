@@ -7,6 +7,7 @@ import { CamaraModule } from './modules/camara/camara.module';
 import { MathModule } from './modules/math/math.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { StatisticsModule } from './modules/statistics/statistics.module';
+import { CronModule } from './modules/cron/cron.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { StatisticsModule } from './modules/statistics/statistics.module';
     CamaraModule,
     MathModule,
     StatisticsModule,
+    CronModule,
   ],
 })
 export class AppModule {}
